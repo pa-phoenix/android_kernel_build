@@ -124,8 +124,7 @@ ifeq ($(KERNEL_LLVM_SUPPORT),true)
        KERNEL_AOSP_LLVM_BIN := $(shell pwd)/$(shell (dirname $(CLANG)))
        $(warning "Not using latest aosp-llvm" $(KERNEL_LLVM_BIN))
     endif
-  cc := CC=$(KERNEL_LLVM_BIN) CLANG_TRIPLE=aarch64-linux-gnu- AR=$(KERNEL_AOSP_LLVM_BIN)/llvm-ar LLVM_NM=$(KERNEL_AOSP_LLVM_BIN)/llvm-nm LD=$(KERNEL_AOSP_LLVM_BIN)/ld.lld NM=$(KERNEL_AOSP_LLVM_BIN)/llvm-nm
-  real_cc := REAL_CC=$(KERNEL_LLVM_BIN) CLANG_TRIPLE=aarch64-linux-gnu- AR=$(KERNEL_AOSP_LLVM_BIN)/llvm-ar LLVM_NM=$(KERNEL_AOSP_LLVM_BIN)/llvm-nm LD=$(KERNEL_AOSP_LLVM_BIN)/ld.lld NM=$(KERNEL_AOSP_LLVM_BIN)/llvm-nm
+  cc := CC=$(KERNEL_LLVM_BIN) REAL_CC=$(KERNEL_LLVM_BIN) CLANG_TRIPLE=aarch64-linux-gnu- AR=$(KERNEL_AOSP_LLVM_BIN)/llvm-ar AS=$(KERNEL_AOSP_LLVM_BIN)/llvm-as LLVM_NM=$(KERNEL_AOSP_LLVM_BIN)/llvm-nm LD=$(KERNEL_AOSP_LLVM_BIN)/ld.lld NM=$(KERNEL_AOSP_LLVM_BIN)/llvm-nm OBJCOPY=$(KERNEL_AOSP_LLVM_BIN)/llvm-objcopy OBJDUMP=$(KERNEL_AOSP_LLVM_BIN)/llvm-objdump STRIP=$(KERNEL_AOSP_LLVM_BIN)/llvm-strip
   endif
 else
 ifeq ($(strip $(KERNEL_GCC_NOANDROID_CHK)),0)
